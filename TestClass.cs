@@ -1,6 +1,6 @@
 ﻿using ProtoBuf;
 
-namespace MinimalisticSerializer
+namespace Net48Benchmark
 {
     [ProtoContract]
     public class TestClass
@@ -12,7 +12,7 @@ namespace MinimalisticSerializer
         [ProtoMember(3)]
         public int C { get; set; }
         [ProtoMember(4)]
-        public string? D { get; set; }
+        public string D { get; set; }
         [ProtoMember(5)]
         public bool E { get; set; }
     }

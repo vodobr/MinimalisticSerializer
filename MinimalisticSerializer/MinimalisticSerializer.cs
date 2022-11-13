@@ -1,34 +1,5 @@
-﻿using Cysharp.Collections;
-using InvertedTomato.Compression.Integers.Gen2;
-using InvertedTomato.Compression.Integers.Gen3;
-using MessagePack.Formatters;
-using Microsoft.IO;
-using Newtonsoft.Json.Linq;
-using ServiceStack.Text.Common;
-using ServiceStack.Text.Pools;
-using System;
-using System.Buffers;
-using System.Collections;
-using System.Collections.Generic;
-using System.Collections.Immutable;
-using System.Collections.Specialized;
-using System.ComponentModel;
-using System.Diagnostics.Metrics;
-using System.Drawing;
-using System.IO;
-using System.IO.Pipelines;
-using System.Linq;
-using System.Numerics;
-using System.Reflection.Metadata;
-using System.Reflection.PortableExecutable;
-using System.Runtime.CompilerServices;
+﻿using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
-using System.Security.Cryptography;
-using System.Text;
-using System.Threading.Tasks;
-using System.Threading.Tasks.Dataflow;
-using System.Transactions;
-using Utf8Json.Internal;
 
 namespace MinimalisticSerializer
 {
@@ -38,22 +9,27 @@ namespace MinimalisticSerializer
         {
             public fixed byte bytes[2];
         }
+        public Buffer2 Buf2;
         public unsafe struct Buffer3
         {
             public fixed byte bytes[3];
         }
+        public Buffer3 Buf3;
         public unsafe struct Buffer4
         {
             public fixed byte bytes[4];
         }
+        public Buffer4 Buf4;
         public unsafe struct Buffer5
         {
             public fixed byte bytes[5];
         }
+        public Buffer5 Buf5;
         public unsafe struct Buffer6
         {
             public fixed byte bytes[6];
         }
+        public Buffer6 Buf6;
         public MinimalisticSerializer() { }
         public unsafe Span<byte> Serialize(Span<byte> bytes, TestClass testClass)
         {
@@ -106,7 +82,6 @@ namespace MinimalisticSerializer
         {
             byte header = 2;
             MemoryMarshal.Write(bytes, ref header);
-            //(bytes, Encoding.Default.CodePage);
         }
         protected void Transform(Span<byte> bytes, bool property)
         {
